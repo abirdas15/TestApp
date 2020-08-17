@@ -21,22 +21,12 @@ export default class Tab1 extends Component {
     }
     fetchData() {
         let _this = this;
-        fetch(`http://127.0.0.1:8000/api/v1/posts/1`, {
-            headers:{
-                'Access-Control-Allow-Origin':'*',
-            },
-        }).then(response =>
-        {
-            if (!response.ok) {
-                throw response;
-            }
-            return response.json();
-        }) 
-        .then(responseJson => {
-            console.warn(responseJson);
-            let data = responseJson.data;
-            _this.setState(previousState => ({spinner: false}));
+        fetch(`http://192.168.43.136/blog/public/api/v1/posts/1`)
+        .then((response) => response.json())
+        .then((res) => {
+            let data = res.data;
             _this.setState(previousState => ({data: data}));
+            _this.setState(previousState => ({spinner: false}));
         })
       .catch((error) => {
         console.warn(error);
