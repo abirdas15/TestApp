@@ -21,7 +21,7 @@ export default class Tab1 extends Component {
     }
     fetchData() {
         let _this = this;
-        fetch(`http://192.168.43.136/blog/public/api/v1/posts/1`)
+        fetch(post_url +'/1')
         .then((response) => response.json())
         .then((res) => {
             let data = res.data;
@@ -29,7 +29,7 @@ export default class Tab1 extends Component {
             _this.setState(previousState => ({spinner: false}));
         })
       .catch((error) => {
-        console.warn(error);
+        //console.warn(error);
       });
     }
     postList() {
@@ -39,19 +39,19 @@ export default class Tab1 extends Component {
                 renderRow={(item) => {
                    return(
                         <ListItem thumbnail>
-                        <Left>
-                            <Thumbnail square source={{ uri: item.image }} />
-                        </Left>
-                        <Body>
-                            <Text numberOfLines={1}>{item.title}</Text>
-                            <Text note numberOfLines={2}>{item.content}</Text>
-                        </Body>
-                        <Right>
-                            <Button transparent>
-                            <Text>View</Text>
-                            </Button>
-                        </Right>
-                    </ListItem>
+                            <Left>
+                                <Thumbnail square source={{ uri: item.image }} />
+                            </Left>
+                            <Body>
+                                <Text numberOfLines={1}>{item.title}</Text>
+                                <Text note numberOfLines={2}>{item.content}</Text>
+                            </Body>
+                            <Right>
+                                <Button transparent>
+                                <Text>View</Text>
+                                </Button>
+                            </Right>
+                        </ListItem>
                    );
                 }}
             />
